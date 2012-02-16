@@ -1,0 +1,23 @@
+!!!
+%html
+  %head
+    = stylesheet_link_tag 'hollaback'
+    = stylesheet_link_tag 'bootstrap.min'
+  %title
+    Hollaback Admin:
+    = yield_content :title
+  %body
+    .container
+      .navbar
+        .navbar-inner
+          .container
+            %a.brand{:href => '/'}Hollaback Admin
+            .nav-collapse
+              %ul.nav
+                %li
+                  %a{:href => '/'}Home
+                %li
+                  %a{:href => '/foo'}Foo
+                %li
+                  %a{:href => '/bar'}Bar
+      = yield
