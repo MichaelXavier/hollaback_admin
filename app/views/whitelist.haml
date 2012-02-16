@@ -1,0 +1,12 @@
+- content_for :title do
+  Whitelist
+
+%h1 Whitelist
+
+%p Currently whitelisted emails:
+- if whitelist.empty?
+  %p There are no emails in the whitelist
+- else
+  %ol
+    - whitelist.emails.each do |email|
+      %li= email

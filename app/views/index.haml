@@ -1,2 +1,14 @@
 - content_for :title do
   Home
+
+%h1 Stats
+
+%dl
+  %dt Whitelisted Email Addresses
+  %dd= whitelisted_email_count
+
+  %dt Scheduled Messages
+  %dd= scheduled_messages_count
+
+  %dt Unprocessed Messages
+  %dd= unprocessed_messages_count
