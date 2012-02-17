@@ -14,4 +14,8 @@ HollabackAdmin.helpers do
   def scheduled_messages_count
     redis.zcard('schedule')
   end
+
+  def format_datetime(datetime)
+    datetime.to_formatted_s(:long_ordinal)
+  end
 end

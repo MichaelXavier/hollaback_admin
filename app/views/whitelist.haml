@@ -3,10 +3,19 @@
 
 %h1 Whitelist
 
-%p Currently whitelisted emails:
-- if whitelist.empty?
-  %p There are no emails in the whitelist
-- else
-  %ol
-    - whitelist.emails.each do |email|
-      %li= email
+%table.table.table-bordered.table-striped.table-condensed
+  %thead
+    %tr
+      %th Enabled?
+      %th Email
+  %tbody
+    - if true || @whitelist.empty?
+      %tr
+        %td.nothing-here{:colspan => 2}
+          There are no emails in the whitelist
+    - else
+      - @whitelist.emails.each do |email|
+        %tr
+          %td
+            %input{:type => 'checkbox', :checked => true}
+          %td= email

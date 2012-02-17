@@ -21,4 +21,4 @@ gem 'padrino', '0.10.5'
 
 gem "redis",           "~>2.2.2"
 gem "redis-namespace", "~>1.1.0"
-
+gem "activesupport",   "~>3.1.0", :require => false

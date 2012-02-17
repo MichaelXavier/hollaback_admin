@@ -1,14 +1,34 @@
 - content_for :title do
   Home
 
-%h1 Stats
-
-%dl
-  %dt Whitelisted Email Addresses
-  %dd= whitelisted_email_count
-
-  %dt Scheduled Messages
-  %dd= scheduled_messages_count
-
-  %dt Unprocessed Messages
-  %dd= unprocessed_messages_count
+.row
+  .span6
+    %h2 Stats
+    %table#stats.table.table-bordered.table-striped
+      %tbody
+        %tr
+          %td Whitelisted Email Addresses
+          %td= @whitelisted_emails
+        %tr
+          %td Scheduled Messages
+          %td= @scheduled_messages
+        %tr
+          %td Unprocessed Messages
+          %td= @unprocessed_messages
+  .span6
+    %h2 10 Soonest Upcoming Messages
+    %table#upcoming-messages.table.table-bordered.table-striped
+      %thead
+        %tr
+          %th Subject
+          %th Due At
+      %tbody
+        - if @message_schedule.empty?
+          %tr
+            %td.nothing-here{:colspan => 2}
+              There are currently no upcoming messages
+        - else 
+          - @message_schedule.soonest(5).each do |message|
+            %tr
+              %td= truncate(message.subject, :length => 50)
+              %td= format_datetime(message.deliver_on)
