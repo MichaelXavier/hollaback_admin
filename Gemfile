@@ -24,3 +24,7 @@ gem "json",            "~>1.6.5"
 gem "mail",            "~>2.4.0"
 gem "redis",           "~>2.2.2"
 gem "redis-namespace", "~>1.1.0"
+
+group :development do
+  gem 'guard-rspec'
+end

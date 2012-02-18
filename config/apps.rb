@@ -4,5 +4,5 @@ Padrino.configure_apps do
 end
 
 # Mounts the core application for this project
-Padrino.mount("Admin", :app_file  => 'app/hollaback_admin/app.rb',
-                       :app_class => 'HollabackAdmin::App').to('/')
+Padrino.mount("HollabackAdmin::App",
+              :app_file => 'hollaback_admin/app.rb').to('/')
