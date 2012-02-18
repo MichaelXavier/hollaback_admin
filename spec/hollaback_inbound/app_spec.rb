@@ -50,6 +50,12 @@ module HollabackInbound
             'offset_seconds' => -28800
           }
         end
+
+        it "puts the message at the end of the queue" do
+          redis.lpush("messages", "old")
+          post_json '/inbound', base_data
+          redis.lpop("messages").should == "old"
+        end
       end
 
       context "email is not found" do
