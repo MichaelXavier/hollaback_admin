@@ -4,8 +4,8 @@ require 'hollaback_inbound/whitelist_filter'
 
 module HollabackInbound
   class App < ::Padrino::Application
-    use ::Rack::PostBodyContentTypeParser
     use ::Rack::ContentTypeValidator, [:post], '/', {:mime_type => 'application/json'}
+    use ::Rack::PostBodyContentTypeParser
     use WhitelistFilter do
       redis
     end
