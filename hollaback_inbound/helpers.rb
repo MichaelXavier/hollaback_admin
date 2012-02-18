@@ -1,5 +1,5 @@
 module HollabackInbound
-  class Helpers
+  module Helpers
     def simplify_payload(json)
       offset = calculate_offset(json['Headers']['Date'])
       {

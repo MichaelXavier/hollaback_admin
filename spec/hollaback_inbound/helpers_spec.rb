@@ -2,7 +2,7 @@ require 'hollaback_inbound/helpers'
 
 module HollabackInbound
   describe Helpers do
-    class HelpersTest; include Helpers; end
+    class HelpersTest; include HollabackInbound::Helpers; end
 
     subject { HelpersTest.new }
 
