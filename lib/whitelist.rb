@@ -7,6 +7,10 @@ class Whitelist
     new(redis).tap(&:load)
   end
 
+  def self.includes?(redis, email)
+    redis.sismember("whitelist", email)
+  end
+
   def initialize(redis, emails = [])
     @redis  = redis
     @emails = emails
