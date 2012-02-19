@@ -45,4 +45,18 @@ describe MessageSchedule do
       end
     end
   end
+
+  describe "#empty?" do
+    context "schedule is not empty" do
+      its(:empty?) { should be_false }
+    end
+
+    context "schedule is empty" do
+      before(:each) do
+        redis.del('schedule')
+      end
+
+      its(:empty?) { should be_true }
+    end
+  end
 end

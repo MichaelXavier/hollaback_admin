@@ -13,6 +13,10 @@ class MessageSchedule
     redis.zcard('schedule')
   end
 
+  def empty?
+    length == 0
+  end
+
 private
 
   def take_messages(tstamps, count)
