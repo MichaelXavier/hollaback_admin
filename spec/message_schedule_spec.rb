@@ -2,11 +2,15 @@ require 'redis-namespace'
 require 'lib/message_schedule'
 
 describe MessageSchedule do
-  let(:redis) { Redis::Namespace.new("hollaback_test", :redis => Redis.new) }
-  let(:timestamps) { %w[1329636687 1329636686 1329636688]}
-  let(:payload) { '{"Subject":"holla back"}'}
+  let(:redis) do
+    Redis::Namespace.new("hollaback_test", :redis => Redis.new)
+  end
 
-  subject {MessageSchedule.new(redis) }
+  let(:timestamps)       { %w[1329636687 1329636686 1329636688]}
+  let(:payload)          { '{"Subject":"holla back"}'          }
+  let(:message_schedule) { MessageSchedule.new(redis)          }
+
+  subject { message_schedule }
 
   before(:each) do
     redis.del(*timestamps)
@@ -20,6 +24,8 @@ describe MessageSchedule do
     redis.del('schedule')
     redis.del(*timestamps)
   end
+
+  its(:length) { should == 3 }
 
   describe "#soonest" do
     context "count of 0" do

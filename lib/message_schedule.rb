@@ -9,6 +9,10 @@ class MessageSchedule
     take_messages(timestamps(count), count)
   end
 
+  def length
+    redis.zcard('schedule')
+  end
+
 private
 
   def take_messages(tstamps, count)
