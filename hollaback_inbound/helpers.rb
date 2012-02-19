@@ -1,5 +1,6 @@
 require 'active_support/core_ext/numeric/time'
 require 'active_support/json'
+require 'lib/inbound_queue'
 
 module HollabackInbound
   module Helpers
@@ -23,7 +24,7 @@ module HollabackInbound
     end
 
     def store(payload)
-      redis.rpush('messages', simplify_payload(payload).to_json)
+      InboundQueue.new(redis).push(simplify_payload(payload).to_json)
     end
   end
 end
