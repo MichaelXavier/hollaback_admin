@@ -8,13 +8,13 @@
       %tbody
         %tr
           %td Whitelisted Email Addresses
-          %td= @whitelisted_emails
+          %td= @whitelist.length
         %tr
           %td Scheduled Messages
-          %td= @scheduled_messages
+          %td= @message_schedule.length
         %tr
           %td Unprocessed Messages
-          %td= @unprocessed_messages
+          %td= @inbound_queue.length
   .span6
     %h2 10 Soonest Upcoming Messages
     %table#upcoming-messages.table.table-bordered.table-striped
@@ -31,4 +31,4 @@
           - @message_schedule.soonest(5).each do |message|
             %tr
               %td= truncate(message.subject, :length => 50)
-              %td= format_datetime(message.deliver_on)
+              %td= format_datetime(message.deliver_at)
