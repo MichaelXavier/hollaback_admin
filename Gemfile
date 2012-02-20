@@ -25,6 +25,7 @@ gem "rack-contrib",    "~>1.1.0", :require => false
 gem "rack-content_type_validator", "~>0.2.1"
 gem "redis",           "~>2.2.2"
 gem "redis-namespace", "~>1.1.0"
+gem "sinatra-contrib", "~>1.3.1", :require => false
 
 group :development, :test do
   gem 'guard-rspec'

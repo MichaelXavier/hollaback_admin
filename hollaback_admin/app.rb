@@ -1,10 +1,17 @@
+require 'sinatra/config_file'
 require 'hollaback_admin/helpers'
+require 'hollaback_admin/authentication'
 
 module HollabackAdmin
   class App < ::Padrino::Application
-    register SassInitializer
-    register Padrino::Rendering
-    register Padrino::Helpers
+    use Authentication
+
+    register ::Sinatra::ConfigFile
+    register ::SassInitializer
+    register ::Padrino::Rendering
+    register ::Padrino::Helpers
+
+    config_file '../config/admin_settings.yml'
 
     helpers do
       include Helpers

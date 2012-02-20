@@ -1,0 +1,10 @@
+development:
+  password_protected: false
+
+test:
+  password_protected: false
+
+production:
+  password_protected: true
+  username: username
+  password: password
