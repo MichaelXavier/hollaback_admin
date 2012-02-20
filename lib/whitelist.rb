@@ -25,7 +25,7 @@ class Whitelist
 
   def save
     redis.del(KEY)
-    redis.sadd(KEY, *@emails) unless @emails.empty?
+    @emails.each {|email| redis.sadd(KEY, email)}
   end
 
 private

@@ -66,6 +66,11 @@ describe Whitelist do
       subject.save
       redis.smembers("whitelist").should == ["you@example.com"]
     end
+
+    it "overwrites with multiple emails" do
+      Whitelist.new(redis, %w[a@example.com b@example.com]).save
+      redis.smembers("whitelist").sort.should == %w[a@example.com b@example.com]
+    end
   end
 
   describe "#length" do
