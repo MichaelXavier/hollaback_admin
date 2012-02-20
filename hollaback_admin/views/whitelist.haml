@@ -3,19 +3,41 @@
 
 %h1 Whitelist
 
-%table.table.table-bordered.table-striped.table-condensed
-  %thead
-    %tr
-      %th Enabled?
-      %th Email
-  %tbody
-    - if true || @whitelist.empty?
+- form_tag '/whitelist', :method => 'put' do
+  %table.table.table-bordered.table-striped.table-condensed
+    %thead
       %tr
-        %td.nothing-here{:colspan => 2}
-          There are no emails in the whitelist
-    - else
+        %th Enabled?
+        %th Email
+    %tbody
       - @whitelist.emails.each do |email|
         %tr
-          %td
-            %input{:type => 'checkbox', :checked => true}
+          %td= check_box_tag 'emails[]', :value => email, :checked => true
           %td= email
+      %tr#add-whitelist-email-row
+        %td{:colspan => 2}
+          //%button#add-whitelist-email Add Email
+          %input#add-whitelist-email.btn{:type => 'button', :value => "Add Email"}
+  = submit_tag 'Update Whitelist', :class => 'btn-primary'
+
+- content_for :jquery_bottom do
+  %script#whitelist-form-template{:type => 'text/html'}
+    %tr.new-email-row
+      %td
+        %input.cancel.btn{:type => 'button', :value => 'Cancel'}
+      %td 
+        = email_field_tag 'emails[]', :placeholder => "Email Address", :class => 'new-email-field'
+
+  :javascript
+    jQuery(function($) {
+      $('#add-whitelist-email').click(function(e) {
+        e.preventDefault();
+        
+        var el = $($('#whitelist-form-template').html());
+
+        el.find('.cancel').click(function(e) { el.remove(); });
+
+        $('#add-whitelist-email-row').before(el);
+        el.find('.new-email-field').focus();
+      });
+    });

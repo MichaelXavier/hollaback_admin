@@ -10,12 +10,18 @@
     .navbar.navbar-fixed-top
       .navbar-inner
         .container
-          %a.brand{:href => '/'}Hollaback Admin
+          %a.brand{:href => '/'} Hollaback Admin
           .nav-collapse
             %ul.nav
               %li
-                %a{:href => '/stats'}Stats
+                %a{:href => '/'} Home
               %li
-                %a{:href => '/whitelist'}Whitelist
+                %a{:href => '/whitelist'} Whitelist
     .container
+      = flash_tag :notice,  :class => 'alert alert-success'
+      = flash_tag :error,   :class => 'alert alert-error'
+      = flash_tag :warning, :class => 'alert alert-warning'
       = yield
+
+    = javascript_include_tag '//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js'
+    = yield_content :jquery_bottom

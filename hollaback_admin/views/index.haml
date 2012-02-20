@@ -28,7 +28,7 @@
             %td.nothing-here{:colspan => 2}
               There are currently no upcoming messages
         - else 
-          - @message_schedule.soonest(5).each do |message|
+          - @message_schedule.soonest(10).each do |message|
             %tr
               %td= truncate(message.subject, :length => 50)
               %td= format_datetime(message.deliver_at)

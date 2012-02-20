@@ -1,3 +1,5 @@
+require 'hollaback_admin/helpers'
+
 module HollabackAdmin
   class App < ::Padrino::Application
     register SassInitializer
@@ -5,6 +7,8 @@ module HollabackAdmin
     register Padrino::Helpers
 
     helpers do
+      include Helpers
+
       def redis
         settings.redis
       end
@@ -21,6 +25,12 @@ module HollabackAdmin
       get :whitelist do
         @whitelist = Whitelist.load(redis)
         render 'whitelist'
+      end
+
+      put :whitelist do
+        Whitelist.new(redis, params.fetch('emails', [])).save
+        flash[:notice] = "Whitelist updated"
+        redirect back
       end
     end
   end
