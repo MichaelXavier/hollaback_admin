@@ -1,8 +1,6 @@
 require 'active_support/core_ext/module/delegation'
 
 class Whitelist
-  KEY = 'whitelist'
-
   attr_reader :emails
   delegate :empty?, :length, :to => :emails
 
@@ -20,12 +18,12 @@ class Whitelist
   end
 
   def reload!
-    @emails = redis.smembers(KEY).to_set
+    @emails = redis.smembers('whitelist').to_set
   end
 
   def save
-    redis.del(KEY)
-    @emails.each {|email| redis.sadd(KEY, email)}
+    redis.del('whitelist')
+    @emails.each {|email| redis.sadd('whitelist', email)}
   end
 
 private
