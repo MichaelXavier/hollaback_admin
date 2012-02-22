@@ -30,6 +30,10 @@ gem "sinatra-contrib", "~>1.3.1", :require => false
 group :development, :test do
   gem 'guard-rspec'
   gem 'ruby-debug'
+  gem 'hoe',       '~>2.12'
+  gem 'vlad',      '~>2.2.4'
+  gem 'vlad-git',  '~>2.2.0'
+  gem 'vlad-thin', '~>1.0.0'
 end
 
 group :test do
