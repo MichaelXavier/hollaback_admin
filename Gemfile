@@ -11,12 +11,8 @@ gem 'sinatra-flash', :require => 'sinatra/flash'
 gem 'sass'
 gem 'haml'
 
-# Test requirements
-
 # Padrino Stable Gem
 gem 'padrino',    '0.10.5'
-#gem 'padrino-core',    '0.10.5'
-#gem 'padrino-helpers', '0.10.5'
 
 gem "activesupport",   "~>3.1.0", :require => false
 gem "json",            "~>1.6.5"
@@ -29,7 +25,6 @@ gem "sinatra-contrib", "~>1.3.1", :require => false
 
 group :development, :test do
   gem 'guard-rspec'
-  gem 'ruby-debug'
 end
 
 group :test do
