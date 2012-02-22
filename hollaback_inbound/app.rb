@@ -1,4 +1,5 @@
 require 'rack/contrib/post_body_content_type_parser'
+require 'rack/content_type_validator'
 require 'hollaback_inbound/helpers'
 require 'hollaback_inbound/whitelist_filter'
 
