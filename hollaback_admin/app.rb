@@ -13,9 +13,11 @@ module HollabackAdmin
     register ::Padrino::Helpers
 
 
-    use(Authentication, settings.password_protected,
-                        settings.username,
-                        settings.password)
+    if settings.password_protected
+      use(Authentication, settings.password_protected,
+                          settings.username,
+                          settings.password)
+    end
 
     helpers do
       include Helpers
