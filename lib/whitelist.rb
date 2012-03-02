@@ -23,7 +23,7 @@ class Whitelist
 
   def save
     redis.del('whitelist')
-    @emails.each {|email| redis.sadd('whitelist', email)}
+    redis.sadd('whitelist', @emails.to_a)
   end
 
 private

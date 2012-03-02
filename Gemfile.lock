@@ -1,3 +1,9 @@
+GIT
+  remote: https://github.com/ezmobius/redis-rb.git
+  revision: 43c728961736e1454b7fc20173c583b57cede7d4
+  specs:
+    redis (2.2.2)
+
 GEM
   remote: http://rubygems.org/
   specs:
@@ -73,7 +79,6 @@ GEM
     rake-remote_task (2.0.6)
       open4 (~> 1.0)
       rake (~> 0.8)
-    redis (2.2.2)
     redis-namespace (1.1.0)
       redis (< 3.0.0)
     rspec (2.8.0)
@@ -131,7 +136,7 @@ DEPENDENCIES
   rack-contrib (~> 1.1.0)
   rack-test
   rake
-  redis (~> 2.2.2)
+  redis!
   redis-namespace (~> 1.1.0)
   rspec
   sass
