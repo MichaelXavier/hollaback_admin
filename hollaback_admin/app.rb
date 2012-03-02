@@ -14,9 +14,9 @@ module HollabackAdmin
 
 
     if settings.password_protected
-      use(Authentication, settings.password_protected,
-                          settings.username,
-                          settings.password)
+      use(Authentication, settings.username,
+                          settings.password,
+                          'Hollaback Admin')
     end
 
     helpers do
