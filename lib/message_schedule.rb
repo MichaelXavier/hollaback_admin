@@ -36,7 +36,7 @@ private
 
   def timestamps(count)
     return [] if count == 0
-    redis.zrange("schedule", 0, count - 1).to_set
+    redis.zrange("schedule", 0, count - 1).reverse.to_set
   end
 
   def parse_timestamp(str)
