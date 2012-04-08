@@ -5,7 +5,7 @@ require 'lib/inbound_queue'
 module HollabackInbound
   module Helpers
     def simplify_payload(json)
-      date = json.fetch('Headers').detect {|h| h['Name'] == 'Date'}.fetch('Value')
+      date = json.fetch('Date')
       offset = calculate_offset(date)
       {
         'from'           => json["From"],

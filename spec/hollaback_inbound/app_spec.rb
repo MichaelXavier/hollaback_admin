@@ -10,10 +10,7 @@ module HollabackInbound
       'To'       => '3h@hollaback.example.com',
       'Subject'  => 'holla back',
       'TextBody' => 'woop woop',
-      'Headers'  => [{
-        'Name'  => 'Date',
-        'Value' => "Fri, 17 Feb 2012 20:19:46 -0800"
-      }]
+      'Date'     => "Fri, 17 Feb 2012 20:19:46 -0800"
     }}
 
     def post_json(path, data)

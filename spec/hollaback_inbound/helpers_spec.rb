@@ -21,10 +21,7 @@ module HollabackInbound
     describe "payload handling" do
       let(:payload) do
         {
-          "Headers" => [{
-            "Name"  => "Date",
-            "Value" => "Fri, 17 Feb 2012 20:19:46 -0800"
-          }],
+          "Date"     => "Fri, 17 Feb 2012 20:19:46 -0800",
           "From"     => "joe@example.com",
           "To"       => "3h@hollaback.example.com",
           "Subject"  => "holla back!",
